@@ -1,1 +1,3 @@
-jxsah;l
+Title: Non-rigid Puzzles
+Authors: Or Litany, Emanuele Rodola, Alex Bronstein, Michael Bronstein, Daniel Cremers
+OS: Windows 10
