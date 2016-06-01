@@ -27,7 +27,7 @@ function u = optimize_u_multi_parts(u,M,N,corr_func,C,target_area,mu1,mu2,lambda
     problem.egrad = @(x)multiparts_du(@vfunc.grad, A, B, G, x, target_area, areas, mu1, mu2, lambda_ones,opt);
 
 %     figure
-    checkgradient(problem);
+%     checkgradient(problem);
 
     options.maxiter = maxiter;%5e2;%3e3;
     options.tolgradnorm = 1e-6;
