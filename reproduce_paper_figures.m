@@ -12,22 +12,44 @@ addpath(genpath('./'));
 addpath(genpath('./../../../manopt/')) %Replace the the correct path to manopt folder
 
 %% Figure 1 
-load('./Data\Figure1_data.mat')
-main_params.output_folder = ['./Results\Figure1\' datestr(now, 'ddmmHHMM') '\']; 
-
+% load('./Data\Figure1a_data.mat')
+% main_params.output_folder = ['./Results\Figure1\']; 
+% main_params.is_clutter = 1;
+% main_params.is_missing_part = 0;
+% algo_params.num_iter.C_step = 10
+% algo_params.lambda_area_parts = 1000
+% algo_params.parts_area_thresh = 0.85;
+% [C,u,v] = solveNonRigidPuzzle(model,parts,corr_functions,main_params,algo_params);
+% 
+% irrelevant_parts_ind = [];
+% irrelevant_parts = []; jj=1;
+% for prt=1:main_params.num_parts    
+%     [~,~,~,arr] = extract_eigen_functions_new(parts{prt}.shape,1);
+%     arr = full(diag(arr));
+%     if sum(arr.*v{prt})/sum(arr) < algo_params.parts_area_thresh,
+%         irrelevant_parts_ind = [irrelevant_parts_ind;prt];
+%         irrelevant_parts{jj} = parts{prt};
+%         jj = jj+1;
+%     end
+% end
+% load('./Data\Figure1a_data.mat')
+% main_params.output_folder = ['./Results\Figure1\']; 
+% parts(irrelevant_parts_ind) = [];
+% corr_functions(irrelevant_parts_ind) = [];
+% main_params.num_parts = numel(parts);
 %% Figure 6 (dog parts) [~45 mins]
 % render_figure = 'Figure6'
 % load(['./Data\' render_figure '_data.mat'])
 % main_params.output_folder = ['./Results\' render_figure '\']; 
 
 %% Figure 7 (real scan) [~8.5 mins]
-% render_figure = 'Figure7';
+render_figure = 'Figure7';
+load(['./Data\' render_figure '_data.mat'])
+main_params.output_folder = ['./Results\' render_figure '\']; 
+%% Figure 8 [~ 1 hour]
+% render_figure = 'Figure8';
 % load(['./Data\' render_figure '_data.mat'])
 % main_params.output_folder = ['./Results\' render_figure '\']; 
-%% Figure 8 [~ 1 hour]
-% load('./Data\Figure8_data.mat')
-% main_params.output_folder = ['./Results\Figure8\' datestr(now, 'ddmmHHMM') '\']; 
-
 %% Figure 9 (overlapping parts) [~ 35 min]
 % render_figure = 'Figure9'
 % load(['./Data\' render_figure '_data.mat'])
@@ -44,13 +66,16 @@ tic
 [C,u,v] = solveNonRigidPuzzle(model,parts,corr_functions,main_params,algo_params);
 toc
 
-%% render
+%% render (Figure 7 is generated during the code - thus no need for a separate rendering)
 switch(render_figure)
+    case 'Figure1'        
+        render_Figure1
     case 'Figure6'        
         render_Figure6
-    case 'Figure10'        
-        render_Figure10
+    case 'Figure8'        
+        render_Figure8
     case 'Figure9'        
         render_Figure9
+    case 'Figure10'        
+        render_Figure10    
 end
-
