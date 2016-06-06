@@ -24,6 +24,4 @@ You are free to use and modify this code for academic purposes. If you do, pleas
   number = {5},
   year = {2016},
   publisher = {Wiley},
-  topic = {Shape Analysis, Segmentation},
-  titleurl = {litany16.pdf},
 }
